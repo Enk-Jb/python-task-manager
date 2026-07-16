@@ -1,0 +1,17 @@
+[
+    {
+        "title": "learn python",
+        "completed": true,
+        "date": "2026-07-16"
+    },
+    {
+        "title": "play call of duty",
+        "completed": false,
+        "date": "2026-07-16"
+    },
+    {
+        "title": "do a commit",
+        "completed": true,
+        "date": "2026-07-16"
+    }
+]
