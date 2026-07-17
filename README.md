@@ -5,10 +5,13 @@ My first Python task manager project.
 ## Features
 
 - Add tasks
-- Show tasks
+- View all tasks
+- View pending tasks
+- View completed tasks
 - Remove tasks
 - Mark tasks as completed
-- Show task creation date
+- Save tasks to a JSON file
+- Load tasks automatically
 
 ## What I Learned
 
@@ -17,14 +20,23 @@ My first Python task manager project.
 - Dictionaries
 - Loops
 - User input validation
-- Python's datetime module
+- Exception handling (`try` / `except`)
+- Python's `datetime` module
+- File handling
+- JSON serialization and deserialization
+- CRUD operations (Create, Read, Update, Delete)
+- Basic software design and problem-solving
+- Git and GitHub basics
 
 ## Future Improvements
 
 - Edit tasks
-- Save tasks to a file
-- Load tasks automatically
-- Show completed tasks only
+- Search tasks by keyword
+- Show task statistics
+- Add task priorities (Low, Medium, High)
+- Add task categories
+- Export tasks to CSV
+
 
 ## Author
 
