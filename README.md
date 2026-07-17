@@ -20,7 +20,13 @@ My first Python task manager project.
 - Dictionaries
 - Loops
 - User input validation
-- Python's datetime module
+- Exception handling (`try` / `except`)
+- Python's `datetime` module
+- File handling
+- JSON serialization and deserialization
+- CRUD operations (Create, Read, Update, Delete)
+- Basic software design and problem-solving
+- Git and GitHub basics
 
 ## Future Improvements
 
