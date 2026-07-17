@@ -5,10 +5,13 @@ My first Python task manager project.
 ## Features
 
 - Add tasks
-- Show tasks
+- View all tasks
+- View pending tasks
+- View completed tasks
 - Remove tasks
 - Mark tasks as completed
-- Show task creation date
+- Save tasks to a JSON file
+- Load tasks automatically
 
 ## What I Learned
 
