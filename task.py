@@ -23,15 +23,16 @@ def load():
 
 def options():
     print("        Main Menu\n")
-    print(" .show options            [1]\n")
+    print(" .Show options            [1]\n")
     print(" .Add task                [2]\n")
     print(" .View tasks              [3]\n")
     print(" .View pending tasks      [4]\n")
     print(" .View completed tasks    [5]\n")
-    print(" .remove task             [6]\n")
-    print(" .mark task as completed  [7]\n")
-    print(" .Save tasks              [8]\n")
-    print(" .Exit                    [9]\n")
+    print(" .Remove task             [6]\n")
+    print(" .Mark task as completed  [7]\n")
+    print(" .Edit task               [8]\n")
+    print(" .Save tasks              [9]\n")
+    print(" .Exit                    [10]\n")
 
 
 def add_task():
@@ -46,11 +47,11 @@ def add_task():
 
 
 def view_tasks():
-    print("\n======View Task======\n")
-    print(f"total tasks: [{len(tasks_list)}]")
     if not tasks_list:
         print("No task available.")
         return
+    print("\n======View Task======\n")
+    print(f"total tasks: [{len(tasks_list)}]")
     for index, task in enumerate(tasks_list, 1):
         status = "[✓]" if task.get("completed") else "[ ]"
         tdate = task.get("date")
@@ -70,10 +71,10 @@ def display_tasks():
 
 
 def pending_tasks():
-    print("\n======Pending Tasks======\n")
     if not tasks_list:
         print("No task available.")
         return
+    print("\n======Pending Tasks======\n")
     for index, task in enumerate(tasks_list, 1):
         tdate = task.get("date")
         name = task.get("title")
@@ -83,10 +84,10 @@ def pending_tasks():
 
 
 def completed_tasks():
-    print("\n======Completed Tasks======\n")
     if not tasks_list:
         print("No task available.")
         return
+    print("\n======Completed Tasks======\n")
 
     for index, task in enumerate(tasks_list, 1):
         tdate = task.get("date")
@@ -96,11 +97,43 @@ def completed_tasks():
             print(f"{status} {index}.{name}| {tdate}(completed)")
 
 
+def edit_task():
+    if not tasks_list:
+        print("No task available.")
+        return
+    print("\n======Edit Task======\n")
+    display_tasks()
+
+    try:
+        edit_index = int(input("Task number to edit: "))
+    except ValueError:
+        print("\nInvalid input. Please enter a valid number.")
+        return
+
+    if edit_index == 0:
+        print("task number can not be '0'")
+    elif 1 <= edit_index <= len(tasks_list):
+        task = tasks_list[edit_index-1]
+        print(f"Task {edit_index}: [{task['title']}]")
+        editor = input("Update: ")
+        if editor:
+            task["title"] = editor
+            print("Task updated successfully")
+        else:
+            print("New title can not be empty.")
+    else:
+        print(
+            f"Invalid task number. Task number "
+            f"must be between 1-{len(tasks_list)}."
+        )
+
+
 def remove_task():
+    if not tasks_list:
+        print("No task available")
+        return
     print("\n======Remove Task======\n")
     display_tasks()
-    if not tasks_list:
-        return
 
     try:
         index = int(input("\nTask number to remove: "))
@@ -121,11 +154,11 @@ def remove_task():
 
 
 def complete_task():
-    print("\n======Mak Task======\n")
-    display_tasks()
     if not tasks_list:
         print("No task available.")
         return
+    print("\n======Mark Task======\n")
+    display_tasks()
 
     try:
         completion_index = int(
@@ -190,12 +223,14 @@ while True:
         elif choice == 7:
             complete_task()
         elif choice == 8:
-            save()
+            edit_task()
         elif choice == 9:
+            save()
+        elif choice == 10:
             save()
             break
         else:
-            print("Your choice must be between 1 and 9.")
+            print("Your choice must be between 1 and 10.")
     except ValueError:
         print("Invalid input. Please enter a valid number.")
     except Exception as e:
