@@ -25,9 +25,12 @@ My first Python task manager project.
 ## Future Improvements
 
 - Edit tasks
-- Save tasks to a file
-- Load tasks automatically
-- Show completed tasks only
+- Search tasks by keyword
+- Show task statistics
+- Add task priorities (Low, Medium, High)
+- Add task categories
+- Export tasks to CSV
+
 
 ## Author
 
