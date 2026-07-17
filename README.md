@@ -5,6 +5,7 @@ My first Python task manager project.
 ## Features
 
 - Add tasks
+- Edit tasks
 - View all tasks
 - View pending tasks
 - View completed tasks
@@ -12,6 +13,7 @@ My first Python task manager project.
 - Mark tasks as completed
 - Save tasks to a JSON file
 - Load tasks automatically
+  
 
 ## What I Learned
 
@@ -30,7 +32,6 @@ My first Python task manager project.
 
 ## Future Improvements
 
-- Edit tasks
 - Search tasks by keyword
 - Show task statistics
 - Add task priorities (Low, Medium, High)
