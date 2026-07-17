@@ -3,7 +3,9 @@ import json
 
 tasks_list = []
 
-print("======Task Manager======")
+print("        ***********************\n"
+      "            Task Manager\n"
+      "        ***********************")
 
 
 def load():
@@ -20,19 +22,20 @@ def load():
 
 
 def options():
-    print("options:")
-    print("1. show options")
-    print("2. Add task")
-    print("3. View tasks")
-    print("4. View pending tasks")
-    print("5. View completed tasks")
-    print("6. remove task")
-    print("7. mark task as completed")
-    print("8. Save tasks")
-    print("9. Exit")
+    print("        Main Menu\n")
+    print(" .show options            [1]\n")
+    print(" .Add task                [2]\n")
+    print(" .View tasks              [3]\n")
+    print(" .View pending tasks      [4]\n")
+    print(" .View completed tasks    [5]\n")
+    print(" .remove task             [6]\n")
+    print(" .mark task as completed  [7]\n")
+    print(" .Save tasks              [8]\n")
+    print(" .Exit                    [9]\n")
 
 
 def add_task():
+    print("\n======Add Task======\n")
     title = input("add a task : ").strip()
     if title:
         tasks_list.append({"title": title, "completed": False,
@@ -43,7 +46,8 @@ def add_task():
 
 
 def view_tasks():
-
+    print("\n======View Task======\n")
+    print(f"total tasks: [{len(tasks_list)}]")
     if not tasks_list:
         print("No task available.")
         return
@@ -51,10 +55,22 @@ def view_tasks():
         status = "[✓]" if task.get("completed") else "[ ]"
         tdate = task.get("date")
         name = task.get("title")
-        print(f"{status} {index}.{name}|{tdate}")
+        print(f"{status} {index}.{name}| {tdate}")
+
+
+def display_tasks():
+    if not tasks_list:
+        print("No task available.")
+        return
+    for index, task in enumerate(tasks_list, 1):
+        status = "[✓]" if task.get("completed") else "[ ]"
+        tdate = task.get("date")
+        name = task.get("title")
+        print(f"{status} {index}.{name}| {tdate}")
 
 
 def pending_tasks():
+    print("\n======Pending Tasks======\n")
     if not tasks_list:
         print("No task available.")
         return
@@ -63,10 +79,11 @@ def pending_tasks():
         name = task.get("title")
         if task["completed"] is False:
             status = "Pending"
-            print(f"{index}.{name}|{tdate}: {status}")
+            print(f"{index}.{name}| {tdate}: [{status}]")
 
 
 def completed_tasks():
+    print("\n======Completed Tasks======\n")
     if not tasks_list:
         print("No task available.")
         return
@@ -76,25 +93,26 @@ def completed_tasks():
         name = task.get("title")
         if task["completed"] is True:
             status = "[✓]"
-            print(f"{status} {index}.{name}|{tdate}(completed)")
+            print(f"{status} {index}.{name}| {tdate}(completed)")
 
 
 def remove_task():
-    view_tasks()
+    print("\n======Remove Task======\n")
+    display_tasks()
     if not tasks_list:
         return
 
     try:
-        index = int(input("Enter the task number to remove: "))
+        index = int(input("\nTask number to remove: "))
     except ValueError:
-        print("Invalid input. Please enter a valid number.")
+        print("\nInvalid input. Please enter a valid number.")
         return
 
     if index == 0:
-        print("Task number cannot be zero.")
+        print("Task number cannot be '0'.")
     elif index > 0 and index <= len(tasks_list):
         removed_task = tasks_list.pop(index - 1)
-        print(f"Task '{removed_task['title']}' has been removed.")
+        print(f"'{removed_task['title']}' has been removed.")
     else:
         print(
             f"Invalid task number. Task number "
@@ -103,21 +121,22 @@ def remove_task():
 
 
 def complete_task():
-    view_tasks()
+    print("\n======Mak Task======\n")
+    display_tasks()
     if not tasks_list:
         print("No task available.")
         return
 
     try:
         completion_index = int(
-            input("Enter the task number to mark as completed: ").strip()
+            input("\nTask number to mark as completed: ").strip()
         )
     except ValueError:
         print("Invalid input. Please enter a valid number.")
         return
 
     if completion_index == 0:
-        print("Task number cannot be zero")
+        print("Task number cannot be '0'")
         return
 
     if 1 <= completion_index <= len(tasks_list):
@@ -125,8 +144,10 @@ def complete_task():
         task["completed"] = True
         print(f"'{task['title']}' completed")
     else:
-        print(f"Invalid task number."
-              f"Task number must be between 1-{len(tasks_list)}.")
+        print(
+            f"Invalid task number."
+            f"Task number must be between 1-{len(tasks_list)}."
+        )
 
 
 def save():
@@ -152,7 +173,7 @@ options()
 
 while True:
     try:
-        choice = int(input("Please make a choice: "))
+        choice = int(input("Enter your choice: "))
 
         if choice == 1:
             options()
@@ -174,7 +195,7 @@ while True:
             save()
             break
         else:
-            print("Invalid choice. Please make a choice between 1 and 9.")
+            print("Your choice must be between 1 and 9.")
     except ValueError:
         print("Invalid input. Please enter a valid number.")
     except Exception as e:
